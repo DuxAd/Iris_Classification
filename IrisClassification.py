@@ -6,64 +6,7 @@ import MyFunction
 df = pd.read_csv('Iris.csv')
 
 print(df.keys())
-# ['Id', 'SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm','Species']
 
-# mappage = {'Iris-setosa': 10, 'Iris-versicolor': 20, 'Iris-virginica': 30}
-# df['Species_int'] = df['Species'].map(mappage)
-
-# Species = df['Species'].unique()
-# Color = ['r', 'g', 'b', 'c', 'm', 'y', 'k', 'w']
-# Dic = {Species: Color for Species, Color in zip(Species, Color[:len(Species)])}
-
-# df['Species_int'] = df['Species'].map(Dic)
-
-# plt.figure(figsize=(12, 8))
-
-# plt.subplot(4, 4, 1)
-# for i in range(len(Species)):
-#     plt.hist(df[df['Species'] == Species[i]]['SepalLengthCm'], bins=10,color=Color[i], alpha=0.7)
-# plt.xlabel('SepalLengthCm')
-# plt.subplot(4, 4, 2)
-# plt.scatter(df['SepalWidthCm'], df['SepalLengthCm'], c=df['Species_int'])
-# plt.xticks([])
-# plt.ylabel('SepalLengthCm')
-# plt.subplot(4, 4, 3)
-# plt.scatter(df['PetalLengthCm'], df['SepalLengthCm'], c=df['Species_int'])
-# plt.xticks([])
-# plt.yticks([])
-# plt.subplot(4, 4, 4)
-# plt.scatter(df['PetalWidthCm'], df['SepalLengthCm'], c=df['Species_int'])
-# plt.xticks([])
-# plt.yticks([])
-
-
-# plt.subplot(4, 4, 6)
-# for i in range(len(Species)):
-#     plt.hist(df[df['Species'] == Species[i]]['SepalWidthCm'], bins=10,color=Color[i], alpha=0.7)
-# plt.xlabel('SepalWidthCm')
-# plt.subplot(4, 4, 7)
-# plt.scatter(df['PetalLengthCm'], df['SepalWidthCm'], c=df['Species_int'])
-# plt.xticks([])
-
-# plt.ylabel('SepalWidthCm')
-# plt.subplot(4, 4, 8)
-# plt.scatter(df['PetalWidthCm'], df['SepalWidthCm'], c=df['Species_int'])
-# plt.xticks([])
-# plt.yticks([])
-         
-# plt.subplot(4, 4, 11)
-# for i in range(len(Species)):
-#     plt.hist(df[df['Species'] == Species[i]]['PetalLengthCm'], bins=10,color=Color[i], alpha=0.7)
-# plt.xlabel('PetalLengthCm')
-# plt.subplot(4, 4, 12)
-# plt.scatter(df['PetalWidthCm'], df['PetalLengthCm'], c=df['Species_int'])
-# plt.ylabel('PetalLengthCm')
-# plt.xticks([])
-
-# plt.subplot(4, 4, 16)
-# for i in range(len(Species)):
-#     plt.hist(df[df['Species'] == Species[i]]['PetalWidthCm'], bins=5,color=Color[i], alpha=0.7)
-# plt.xlabel('PetalWidthCm')
 import seaborn as sns
 sns.pairplot(df, vars=['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm'], hue='Species')
 plt.show()
@@ -209,3 +152,4 @@ for i in perm_imp.importances_mean.argsort()[::-1]:
           f"{perm_imp.importances_mean[i]:.3f}"
           f" +/- {perm_imp.importances_std[i]:.3f}")
 print("\n####################################")
+
