@@ -13,16 +13,18 @@ The project includes:
 
 | Model                | Accuracy (Test) | Accuracy (CV) | F1-Score | ROC-AUC | Precision | Recall | CV Std Dev |
 |----------------------|-----------------|---------------|----------|---------|-----------|--------|------------|
-| DecisionTree         | 0.920           | 0.970 ± 0.054 | 0.917    | 0.939   | 0.917     | 0.917  | 0.046      |
-| RandomForest         | 0.960           | 0.950 ± 0.050 | 0.965    | 0.990   | 0.965     | 0.968  | 0.067      |
-| SVM                  | 0.980           | 0.990 ± 0.040 | 0.982    | 0.998   | 0.981     | 0.984  | 0.030      |
-| KNN                  | 0.960           | 0.980 ± 0.046 | 0.965    | 0.985   | 0.965     | 0.968  | 0.060      |
+| DecisionTree         | 1.000           | 0.942 ± 0.043 | 1.000    | 1.000   | 1.000     | 1.000  | 0.043      |
+| RandomForest         | 1.000           | 0.942 ± 0.057 | 1.000    | 1.000   | 1.000     | 1.000  | 0.057      |
+| SVM                  | 1.000           | 0.967 ± 0.017 | 1.000    | 1.000   | 1.000     | 1.000  | 0.017      |
+| KNN                  | 1.000           | 0.958 ± 0.026 | 1.000    | 1.000   | 1.000     | 1.000  | 0.026      |
 
 #### ** WIP ** ########
 ### Observations
-- **DecisionTree** (`max_depth=None`, `max_leaf_nodes=22`, `min_samples_split=2`): Lowest test accuracy (0.940) and CV accuracy (0.950).
-- **RandomForest** (`max_depth=5`, `min_samples_leaf=3`, `min_samples_split=2`, `n_estimators=40`): Test accuracy of 0.960 and stable CV (0.950).
-- **SVM** (`kernel='rbf'`, `C=10`, `class_weight='balanced'`): Best CV accuracy (0.990) and high ROC-AUC (0.998), confirming linear separability of classes. 
-- **KNN** (`n_neighbors=3`): High test accuracy (0.960), excellent CV accuracy (0.980).
-- **Feature Importance **: Permutation importance confirms that `PetalLengthCm` and `PetalWidthCm` are the most discriminative features, as seen in scatter plots.
+- **DecisionTree** (max_depth=None, max_leaf_nodes=22, min_samples_split=5): Perfect test accuracy (1.000), but lower CV accuracy (0.942) with moderate variance (0.043), indicating slight overfitting due to small dataset size.
+- **RandomForest** (max_depth=2, min_samples_leaf=2, min_samples_split=2, n_estimators=5): Perfect test accuracy (1.000), but CV accuracy (0.942) with higher variance (0.057), likely due to low n_estimators.
+- **SVM** (kernel='rbf', C=10, class_weight=None): Best CV accuracy (0.967) and lowest variance (0.017), confirming robust performance. Note: kernel='rbf' requires feature normalization for optimal results.
+- **KNN** (n_neighbors=5, weights='uniform'): High test accuracy (1.000) and CV accuracy (0.958) with low variance (0.026), benefiting from the dataset's simplicity.
+
+
+- **Feature Importance **: Feature importance confirms that `PetalLengthCm` and `PetalWidthCm` are the most discriminative features, as seen in scatter plots.
 - **Visualization**: Scatter plots show clear separation of classes, especially with `PetalLengthCm` and `PetalWidthCm`, explaining the high performance across models.
